@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% block content %}
+<main id="top">
+  <section class="hero container">
+    <div class="hero-left">
+      <p class="pill">Available for Cloud & DevOps roles</p>
+      <h1>Hi, I'm <span class="accent">Brandon Brinson</span> — I build <span class="gradient">cloud‑native</span> apps.</h1>
+      <p class="lede">
+        AWS • Docker • Linux • Terraform • CI/CD • Python. I design reliable infrastructure and ship production‑ready apps.
+      </p>
+      <div class="cta-row">
+        <a class="btn primary" href="#projects">View Projects</a>
+        <a class="btn ghost" href="#contact">Contact Me</a>
+      </div>
+      <ul class="quick-stats">
+        <li><strong>AWS</strong> SAA, CLF‑C01</li>
+        <li>6+ yrs IT Ops</li>
+        <li>Fitness‑Tech founder</li>
+      </ul>
+    </div>
+    <div class="hero-right">
+      <div class="card glass">
+        <h3 class="card-title">Current Focus</h3>
+        <ul class="checklist">
+          <li>Portfolio on ECS</li>
+          <li>Flask API with RDS</li>
+          <li>GitHub Actions CI/CD</li>
+        </ul>
+      </div>
+      <div class="grid-badges">
+        <span class="badge">AWS</span>
+        <span class="badge">Docker</span>
+        <span class="badge">Flask</span>
+        <span class="badge">Terraform</span>
+        <span class="badge">Linux</span>
+        <span class="badge">Nginx</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section container">
+    <h2 class="section-title">About</h2>
+    <p>
+      I'm an IT professional based in Georgia who blends <strong>cloud engineering</strong> and <strong>fitness</strong>.
+      I love shipping clean, resilient infrastructure and teaching others through hands‑on projects.
+    </p>
+  </section>
+
+  <section id="skills" class="section container">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Cloud</h3>
+        <ul>
+          <li>AWS (ECS, ECR, RDS, S3, IAM, VPC)</li>
+          <li>CloudFront, Route 53, ALB</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Dev & Ops</h3>
+        <ul>
+          <li>Docker, Compose</li>
+          <li>Terraform, GitHub Actions</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Backend</h3>
+        <ul>
+          <li>Flask, Gunicorn</li>
+          <li>PostgreSQL/MySQL</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Linux</h3>
+        <ul>
+          <li>Bash scripting</li>
+          <li>NGINX, systemd</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section container">
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-grid">
+      <article class="project-card">
+        <div class="project-top">
+          <h3>B‑Fit Genie</h3>
+          <p>Flask + RDS workout generator with role‑based API keys.</p>
+        </div>
+        <div class="project-bottom">
+          <a class="btn small" href="#" aria-disabled="true">Repo</a>
+          <a class="btn small ghost" href="#" aria-disabled="true">Live</a>
+        </div>
+      </article>
+      <article class="project-card">
+        <div class="project-top">
+          <h3>ContactBridge</h3>
+          <p>SES‑backed contact form with spam filtering and Terraform IaC.</p>
+        </div>
+        <div class="project-bottom">
+          <a class="btn small" href="#" aria-disabled="true">Repo</a>
+          <a class="btn small ghost" href="#" aria-disabled="true">Live</a>
+        </div>
+      </article>
+      <article class="project-card">
+        <div class="project-top">
+          <h3>BrinovaX Landing</h3>
+          <p>Static site on S3 + CloudFront, automated via GitHub Actions.</p>
+        </div>
+        <div class="project-bottom">
+          <a class="btn small" href="#" aria-disabled="true">Repo</a>
+          <a class="btn small ghost" href="#" aria-disabled="true">Live</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="contact" class="section container">
+    <h2 class="section-title">Contact</h2>
+    <form class="contact-form" onsubmit="return false;">
+      <div class="row">
+        <input type="text" placeholder="Your name" required />
+        <input type="email" placeholder="Email address" required />
+      </div>
+      <textarea rows="5" placeholder="Your message"></textarea>
+      <button class="btn primary" onclick="fakeSubmit()">Send Message</button>
+      <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+</main>
+{% endblock %}

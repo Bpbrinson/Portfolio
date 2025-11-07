@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ page_title or "Portfolio" }}</title>
+    <meta name="description" content="Brandon Brinson — Cloud & DevOps Engineer portfolio showcasing AWS, Python, Linux, Docker, and CI/CD projects." />
+    <meta property="og:title" content="{{ page_title or 'Portfolio' }}" />
+    <meta property="og:description" content="Cloud + DevOps projects, write-ups, and contact info." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <script defer src="{{ url_for('static', filename='main.js') }}"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="#top">
+          <img src="{{ url_for('static', filename='favicon.svg') }}" alt="Brandon logo" />
+          <span>Brandon's Portfolio</span>
+        </a>
+        <nav id="nav" class="nav">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="nav-actions">
+          <button id="themeToggle" class="btn icon-btn" title="Toggle theme" aria-label="Toggle theme">
+            <span class="icon-moon"></span>
+          </button>
+          <button id="menuToggle" class="btn icon-btn only-mobile" aria-label="Open menu">
+            <span class="icon-menu"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <h4>Brandon Brinson</h4>
+          <p>Cloud & DevOps Engineer • Fitness‑Tech Founder</p>
+        </div>
+        <div class="links">
+          <a href="https://github.com/Bpbrinson" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="mailto:brandon@example.com">Email</a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </div>
+      <p class="copyright">© {{ 2025 }} Brandon Brinson • Built with Flask</p>
+    </footer>
+  </body>
+</html>
