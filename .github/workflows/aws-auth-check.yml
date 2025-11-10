@@ -1,0 +1,24 @@
+# .github/workflows/aws-auth-check.yml
+name: AWS Auth Check
+on: { workflow_dispatch: {} }
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  AWS_REGION: us-east-1
+  OIDC_ROLE_ARN: arn:aws:iam::<ACCOUNT_ID>:role/<GITHUB_DEPLOY_ROLE>
+
+jobs:
+  whoami:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.OIDC_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+          # keep <= role max if you changed it
+          role-duration-seconds: 3600
+      - run: aws sts get-caller-identity
