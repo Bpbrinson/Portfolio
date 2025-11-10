@@ -36,7 +36,7 @@ env:
   ECS_SERVICE: portfolio-service                 # set this to your Amazon ECS service name
   ECS_CLUSTER: brandon-ortfolio-cluster                 # set this to your Amazon ECS cluster name
   ECS_TASK_DEFINITION: portfolio-task # set this to the path to your Amazon ECS task definition
-                                               # file, e.g. .aws/task-definition.json
+  OIDC_ROLE_ARN: ${{ secrets.OIDC_ROLE_ARN }}
   CONTAINER_NAME: 724843234768.dkr.ecr.us-east-1.amazonaws.com/brandon-portfolio-repo:latest           # set this to the name of the container in the
                                                # containerDefinitions section of your task definition
 
