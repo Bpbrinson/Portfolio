@@ -1,0 +1,30 @@
+{
+  "family": "portfolio-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::724843234768:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "portfolio-container",
+      "image": "724843234768.dkr.ecr.us-east-1.amazonaws.com/brandon-portfolio-repo:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 8000,
+          "hostPort": 80000,
+          "protocol": "tcp"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/portfolio-task",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}
