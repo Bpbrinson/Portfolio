@@ -8,7 +8,7 @@ permissions:
 
 env:
   AWS_REGION: us-east-1
-  OIDC_ROLE_ARN: arn:aws:iam::<ACCOUNT_ID>:role/<GITHUB_DEPLOY_ROLE>
+  OIDC_ROLE_ARN: ${{ secrets.OIDC_ROLE_ARN }}
 
 jobs:
   whoami:
