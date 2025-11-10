@@ -20,7 +20,7 @@
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "/ecs/portfolio-task",
+          "awslogs-group": "/aws/ecs/containerinsights/brandon-portfolio-cluster/performance",
           "awslogs-region": "us-east-1",
           "awslogs-stream-prefix": "ecs"
         }
