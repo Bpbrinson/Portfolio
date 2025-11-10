@@ -53,6 +53,14 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: ${{ env.OIDC_ROLE_ARN }}
+        aws-region: us-east-1
+        # keep this ≤ role’s MaxSessionDuration
+        role-duration-seconds: 3600
+
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
