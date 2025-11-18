@@ -1,0 +1,127 @@
+# ========================================
+# 🌍 Terraform
+# ========================================
+# Local state files
+*.tfstate
+*.tfstate.*
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Plan outputs
+*.plan
+plan.out
+
+# Local .terraform directories (modules/plugins)
+**/.terraform/
+**/.terraform.lock.hcl
+
+# Terraform variable files (if they contain secrets)
+terraform.tfvars
+*.auto.tfvars
+
+# Ignore backup files
+*.backup
+*.bak
+
+# ========================================
+# 🐍 Python (Flask)
+# ========================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+
+# Virtual environment directories
+env/
+venv/
+ENV/
+.venv/
+.Python
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+
+# Pytest and coverage
+.coverage
+htmlcov/
+.tox/
+.nox/
+.pytest_cache/
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pyre/
+
+# ========================================
+# 🐳 Docker
+# ========================================
+# Ignore Docker build artifacts or context extras
+*.tar
+*.bak
+*.tmp
+
+# Optional: ignore local environment override files
+.env
+.env.*
+
+# ========================================
+# 🧱 Infrastructure and deployment
+# ========================================
+# AWS credentials (never commit!)
+.aws/
+credentials
+config
+
+# Logs
+*.log
+logs/
+debug.log
+
+# Local test files or notes
+notes.txt
+*.swp
+
+# Temporary editor files (VSCode, JetBrains, etc.)
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ========================================
+# ⚙️ GitHub / CI artifacts
+# ========================================
+# Action runs / cache
+.github/workflows/*.bak
+.github/workflows/tmp/
+
+# ========================================
+# 📦 Miscellaneous
+# ========================================
+# Ignore compiled binaries or temp build files
+*.out
+*.o
+*.exe
+
+# Ignore OS/system files
+.DS_Store
+*.swp
+*.swo
