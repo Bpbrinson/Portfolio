@@ -8,12 +8,12 @@
   "containerDefinitions": [
     {
       "name": "portfolio-container",
-      "image": "724843234768.dkr.ecr.us-east-1.amazonaws.com/brandon-portfolio-repo:latest",
+      "image": "724843234768.dkr.ecr.us-east-1.amazonaws.com/brandon/portfolio:latest",
       "essential": true,
       "portMappings": [
         {
-          "containerPort": 8000,
-          "hostPort": 8000,
+          "containerPort": 80,
+          "hostPort": 80,
           "protocol": "tcp"
         }
       ],
