@@ -18,7 +18,7 @@ resource "aws_ecs_task_definition" "portfolio_task" {
   container_definitions = jsonencode([
     {
       name      = "portfolio-container"
-      image     = "724843234768.dkr.ecr.us-east-1.amazonaws.com/brandon-portfolio-repo:latest"
+      image     = "724843234768.dkr.ecr.us-east-1.amazonaws.com/brandon/portfolio:latest"
       essential = true
       portMappings = [
         {
@@ -38,6 +38,12 @@ resource "aws_ecs_service" "portfolio_service" {
   task_definition = aws_ecs_task_definition.portfolio_task.arn
   desired_count   = 1
   launch_type     = "FARGATE"
+
+  load_balancer {
+    target_group_arn = aws_lb_target_group.app_tg.arn
+    container_name   = "portfolio-container"
+    container_port   = 80
+  }
 
   network_configuration {
     subnets          = [aws_subnet.public_subnet.id]
@@ -76,3 +82,45 @@ resource "aws_appautoscaling_policy" "cpu_target_tracking" {
   }
 }
 
+# Load balancer to distribute traffic to ECS tasks
+resource "aws_lb" "portfolio_lb" {
+  name               = "portfolio-lb"
+  internal           = false
+  load_balancer_type = "application"
+  security_groups    = [aws_security_group.alb_portfolio_sg.id]
+  subnets            = [aws_subnet.public_subnet.id, aws_subnet.public_subnet_2.id]
+
+  enable_deletion_protection = false
+
+  tags = {
+    Name = "portfolio-lb"
+  }
+}
+
+resource "aws_lb_target_group" "app_tg" {
+  name        = "app-tg"
+  port        = 80
+  protocol    = "HTTP"
+  vpc_id      = aws_vpc.vpc.id
+  target_type = "ip"  # REQUIRED for awsvpc/Fargate :contentReference[oaicite:4]{index=4}
+
+  health_check {
+    path                = "/health"
+    healthy_threshold   = 2
+    unhealthy_threshold = 2
+    timeout             = 5
+    interval            = 30
+    matcher             = "200"
+  }
+}
+
+resource "aws_lb_listener" "http_listener" {
+  load_balancer_arn = aws_lb.portfolio_lb.arn
+  port              = 80
+  protocol          = "HTTP"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.app_tg.arn
+  }
+}
