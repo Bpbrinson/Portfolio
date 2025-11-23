@@ -23,6 +23,8 @@ resource "aws_ecs_task_definition" "portfolio_task" {
       portMappings = [
         {
           containerPort = 8000
+          hostPort      = 8000
+          protocol      = "tcp"
         }
       ]
     }
@@ -97,7 +99,7 @@ resource "aws_lb" "portfolio_lb" {
 
 resource "aws_lb_target_group" "app_tg" {
   name        = "app-tg"
-  port        = 80
+  port        = 8000
   protocol    = "HTTP"
   vpc_id      = aws_vpc.vpc.id
   target_type = "ip"  # REQUIRED for awsvpc/Fargate :contentReference[oaicite:4]{index=4}
