@@ -42,7 +42,7 @@ resource "aws_ecs_service" "portfolio_service" {
   load_balancer {
     target_group_arn = aws_lb_target_group.app_tg.arn
     container_name   = "portfolio-container"
-    container_port   = 8000
+    container_port   = 80
   }
 
   network_configuration {
