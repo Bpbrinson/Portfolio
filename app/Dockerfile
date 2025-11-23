@@ -34,4 +34,4 @@ HEALTHCHECK --interval=30s --timeout=3s --retries=3 CMD curl -f http://127.0.0.1
 
 # Prefer CMD for overridability; ENTRYPOINT can stay the binary
 ENTRYPOINT ["gunicorn"]
-CMD ["-w","2","-b","0.0.0.0:80","app:create_app()"]
+CMD ["-w","2","-b","0.0.0.0:8000","app:create_app()"]
