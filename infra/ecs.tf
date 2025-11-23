@@ -22,7 +22,7 @@ resource "aws_ecs_task_definition" "portfolio_task" {
       essential = true
       portMappings = [
         {
-          containerPort = 8000
+          containerPort = 80
           hostPort      = 8000
           protocol      = "tcp"
         }
@@ -42,7 +42,7 @@ resource "aws_ecs_service" "portfolio_service" {
   load_balancer {
     target_group_arn = aws_lb_target_group.app_tg.arn
     container_name   = "portfolio-container"
-    container_port   = 80
+    container_port   = 8000
   }
 
   network_configuration {
