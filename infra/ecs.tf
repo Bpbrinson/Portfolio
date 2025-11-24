@@ -8,7 +8,7 @@ resource "aws_ecs_cluster" "brandon-portfolio-cluster" {
 }
 
 resource "aws_ecs_task_definition" "portfolio_task" {
-  family                   = "portfolio-task"
+  family                   = "portfolio-taskdef"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu                      = "256"
@@ -104,15 +104,6 @@ resource "aws_lb_target_group" "app_tg" {
   protocol    = "HTTP"
   vpc_id      = aws_vpc.vpc.id
   target_type = "ip"  # REQUIRED for awsvpc/Fargate :contentReference[oaicite:4]{index=4}
-
-  health_check {
-    path                = "/health"
-    healthy_threshold   = 2
-    unhealthy_threshold = 2
-    timeout             = 5
-    interval            = 30
-    matcher             = "200"
-  }
 }
 
 resource "aws_lb_listener" "http_listener" {

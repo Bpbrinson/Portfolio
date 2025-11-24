@@ -1,5 +1,5 @@
 {
-  "family": "portfolio-task",
+  "family": "portfolio-taskdef",
   "networkMode": "awsvpc",
   "requiresCompatibilities": ["FARGATE"],
   "cpu": "256",
