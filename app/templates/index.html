@@ -117,15 +117,22 @@
 
   <section id="contact" class="section container">
     <h2 class="section-title">Contact</h2>
-    <form class="contact-form" onsubmit="return false;">
+    <form class="contact-form" id="contactForm">
       <div class="row">
-        <input type="text" placeholder="Your name" required />
-        <input type="email" placeholder="Email address" required />
+        <input type="text" name="first_name" placeholder="First name" required />
+        <input type="text" name="last_name" placeholder="Last name" required />
       </div>
-      <textarea rows="5" placeholder="Your message"></textarea>
-      <button class="btn primary" onclick="fakeSubmit()">Send Message</button>
+
+      <div class="row">
+        <input type="email" name="email" placeholder="Email address" required />
+        <input type="tel" name="phone" placeholder="Phone number" />
+      </div>
+
+      <textarea name="message" rows="5" placeholder="Your message" required></textarea>
+
+      <button class="btn primary" type="submit">Send Message</button>
       <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
-    </form>
+  </form>
   </section>
 </main>
 {% endblock %}

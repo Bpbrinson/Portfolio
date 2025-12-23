@@ -33,3 +33,30 @@ function fakeSubmit() {
   }
 }
 window.fakeSubmit = fakeSubmit;
+
+const form = document.getElementById("contactForm");
+  const statusEl = document.getElementById("formStatus");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    statusEl.textContent = "Sending...";
+
+    const payload = Object.fromEntries(new FormData(form).entries());
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed");
+
+      statusEl.textContent = "Message sent ✅";
+      form.reset();
+    } catch (err) {
+      statusEl.textContent = "Error sending message ❌";
+      console.error(err);
+    }
+  });
